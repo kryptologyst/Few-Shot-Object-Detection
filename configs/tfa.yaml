@@ -1,0 +1,12 @@
+# TFA configuration
+defaults:
+  - config
+
+model:
+  name: "tfa"
+  backbone: "resnet50"
+  feature_dim: 256
+
+training:
+  learning_rate: 2e-4
+  scheduler: "step"

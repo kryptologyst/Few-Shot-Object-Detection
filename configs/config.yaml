@@ -1,0 +1,69 @@
+# Default configuration for few-shot object detection
+defaults:
+  - _self_
+
+# Model configuration
+model:
+  name: "meta_rcnn"  # meta_rcnn, fsrw, tfa
+  num_classes: 10
+  support_shot: 5
+  backbone: "resnet50"
+  feature_dim: 256
+  attention_dim: 128
+
+# Data configuration
+data:
+  dataset_name: "cifar10"  # cifar10, cifar100, imagefolder
+  data_root: "data"
+  image_size: 224
+  batch_size: 1
+  num_workers: 4
+  num_episodes: 100
+  val_episodes: 50
+
+# Training configuration
+training:
+  epochs: 100
+  learning_rate: 1e-4
+  weight_decay: 1e-4
+  optimizer: "adam"  # adam, adamw, sgd
+  scheduler: "cosine"  # cosine, step, plateau, null
+  grad_clip: 1.0
+  patience: 10
+  min_delta: 0.001
+  save_interval: 10
+  log_interval: 10
+
+# Loss configuration
+loss:
+  lambda_proto: 0.5
+  lambda_roi: 0.5
+  temperature: 1.0
+
+# Evaluation configuration
+evaluation:
+  num_episodes: 100
+  support_shots: [1, 5, 10]
+  save_results: true
+  output_dir: "results"
+
+# Logging configuration
+logging:
+  log_dir: "logs"
+  checkpoint_dir: "checkpoints"
+  use_wandb: false
+  wandb_project: "few-shot-detection"
+  wandb_entity: null
+
+# Device configuration
+device:
+  use_cuda: true
+  use_mps: true
+  seed: 42
+
+# Paths
+paths:
+  data_root: "data"
+  output_root: "outputs"
+  checkpoint_root: "checkpoints"
+  log_root: "logs"

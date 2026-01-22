@@ -1,0 +1,12 @@
+# FSRW configuration
+defaults:
+  - config
+
+model:
+  name: "fsrw"
+  backbone: "resnet50"
+  feature_dim: 256
+  attention_dim: 128
+
+training:
+  learning_rate: 5e-5

@@ -1,0 +1,12 @@
+# Meta-RCNN configuration
+defaults:
+  - config
+
+model:
+  name: "meta_rcnn"
+  backbone: "resnet50"
+  feature_dim: 256
+
+loss:
+  lambda_proto: 0.7
+  lambda_roi: 0.3
